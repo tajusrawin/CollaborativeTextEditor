@@ -1,0 +1,139 @@
+Build a fully functional, Google Docs-like collaborative and WYSIWYG document editor using React.js (Frontend) and Google Apps Script (Backend). The editor must support real-time live preview, rich content editing, Google Sheet tab data insertion, export options, conditional logic, and custom page formatting. UI must replicate Google Docs-like experience with a clean look (#ffffff background, #1e1e1e text accents).
+
+1. Live Preview + Document Editor (Main Workspace)
+A full-page, rich text editor that mimics Google Docs:
+
+Live cursor position tracking and preview
+
+Real-time text update with formatting reflected instantly
+
+Display what-you-see-is-what-you-get (WYSIWYG) behavior
+
+Features supported:
+
+Heading styles (H1 to H6), Paragraphs
+
+Font family, size, bold, italic, underline, strikethrough
+
+Font/text color and background color
+
+Bullet list, numbered list, indentation
+
+Alignment (left, center, right, justify)
+
+Hyperlinks (clickable in preview)
+
+Horizontal lines, page breaks
+
+Image insertion:
+
+Upload image from local browser storage (not Google Drive)
+
+Image persists in local storage (IndexedDB) as base64 blob
+
+Resize, align (left/center/right), drag & drop support
+
+Replace/Delete functionality for image block
+
+Table Insertion:
+
+Create tables with adjustable rows & columns
+
+Merge/Split cells, drag to resize
+
+Individual cell style: text color, background, border, padding
+
+Conditional Formatting:
+
+If cell = "Approved" → Green background
+
+If "Not Approved" → Red background
+
+No auto-wrap for overflow — instead show horizontal scroll
+
+2. Tab: Insert Data from Google Sheets
+Fetch Google Sheet files from user’s Drive via Google Apps Script.
+
+On selecting a file, fetch its individual sheet tabs (not folder/files).
+
+When a sheet tab is selected:
+
+Get the data as 2D array using SpreadsheetApp.
+
+Convert the data into a styled table and insert it in the editor.
+
+3. Tab: Page Settings
+Paper Size selection: A4, A3, A5, Legal, Letter, Auto-Fit
+
+Orientation: Portrait / Landscape
+
+Global Font Selection (Google Fonts API)
+
+Global Margins, Padding, Line Spacing
+
+Default background and text color for entire document
+
+4. Tab: Export / Share
+Export current document with all formatting to:
+
+PDF (print-ready, respect orientation and paper size)
+
+DOCX
+
+HTML
+
+JSON (for saving structure like blocks: heading, paragraph, table, etc.)
+
+CSV (only structured tables)
+
+Also support:
+
+Share via email using Gmail API in Apps Script
+
+Save to Google Drive as PDF
+
+Option to download or print directly
+
+5. UI/UX Design:
+Use clean, minimal layout inspired by Google Docs:
+
+Top navigation bar with dropdowns and formatting tools
+
+Left sidebar for navigation between sections
+
+Sticky header with: Font controls, alignment, insert image/table
+
+Use TailwindCSS with #ffffff background and #1e1e1e text & accent elements
+
+Responsive layout (for desktop-first)
+
+Live Preview section on the right that reflects content instantly
+
+Light/Dark toggle for preview only
+
+6. Additional Requirements:
+Auto Save draft to Local Storage (content + images in IndexedDB)
+
+Auto recover from drafts on page reload
+
+Image does NOT use Google Drive — only browser/local memory
+
+Smooth drag-drop reordering of blocks (image, table, text)
+
+Reuse components via modular design: Editor, Toolbar, SettingsPanel, ExportPanel, SheetImporter
+
+7. Technology Stack:
+Frontend: React.js (preferably Vite), TailwindCSS, Lucide icons
+
+Backend: Google Apps Script deployed as Web App with doGet and doPost
+
+State Management: React Context or Zustand for managing global state (document, settings, export config)
+
+Image Persistence: Use localStorage or IndexedDB to retain images across reloads
+
+Export: Use jsPDF or html2pdf.js for client-side PDF generation
+
+Conditional Styles: JSON rules to define cell-level conditions for formatting
+
+Output:
+A fully functional document editing system with Google Docs-like interface and live preview, supporting Google Sheets integration, smart table logic, offline image storage, and advanced export capabilities — built with React.js and Google Apps Script only (no external backend or DB).
