@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.7% 60%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 240 10% 3.9%;
+  --radius: 0.5rem;
+  
+  /* Google Docs specific colors */
+  --google-blue: 221 83% 53%;
+  --google-green: 142 71% 45%;
+  --google-yellow: 45 93% 58%;
+  --google-red: 4 90% 58%;
+  --border-light: 220 13% 91%;
+  --bg-subtle: 210 20% 98%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom styles for document editor */
+.document-page {
+  width: 8.5in;
+  min-height: 11in;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+}
+
+.document-content {
+  padding: 1in;
+}
+
+.editor-content {
+  min-height: 9in;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1e1e1e;
+}
+
+.editor-content:focus {
+  outline: none;
+}
+
+.preview-content {
+  transform: scale(0.75);
+  transform-origin: top left;
+  width: 133.33%;
+}
+
+.toolbar-button {
+  @apply p-2 hover:bg-gray-200 rounded transition-colors;
+}
+
+.toolbar-button.active {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.sidebar-tab {
+  @apply flex-1 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900;
+}
+
+.sidebar-tab.active {
+  @apply text-blue-600 border-b-2 border-blue-600 bg-white;
+}
+
+.google-blue {
+  color: hsl(var(--google-blue));
+}
+
+.bg-google-blue {
+  background-color: hsl(var(--google-blue));
+}
+
+.border-google-blue {
+  border-color: hsl(var(--google-blue));
+}
+
+.bg-google-green {
+  background-color: hsl(var(--google-green));
+}
+
+.bg-google-red {
+  background-color: hsl(var(--google-red));
+}
+
+.border-light {
+  border-color: hsl(var(--border-light));
+}
+
+.bg-subtle {
+  background-color: hsl(var(--bg-subtle));
+}
+
+/* Rich text editor styles */
+.rich-editor {
+  @apply prose prose-lg max-w-none;
+}
+
+.rich-editor h1 {
+  @apply text-3xl font-bold mb-6 text-gray-900;
+}
+
+.rich-editor h2 {
+  @apply text-2xl font-semibold mt-8 mb-4 text-gray-900;
+}
+
+.rich-editor h3 {
+  @apply text-xl font-semibold mb-4 text-gray-900;
+}
+
+.rich-editor p {
+  @apply mb-4 text-gray-800 leading-relaxed;
+}
+
+.rich-editor ul {
+  @apply list-disc pl-6 mb-6 space-y-2;
+}
+
+.rich-editor ol {
+  @apply list-decimal pl-6 mb-6 space-y-2;
+}
+
+.rich-editor table {
+  @apply w-full border-collapse border border-gray-300 my-8;
+}
+
+.rich-editor th {
+  @apply border border-gray-300 px-4 py-2 text-left font-semibold bg-gray-50;
+}
+
+.rich-editor td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.rich-editor hr {
+  @apply my-8 border-gray-300;
+}
+
+.rich-editor img {
+  @apply rounded-lg shadow-md max-w-full mx-auto;
+}
+
+/* Conditional formatting styles */
+.status-approved {
+  @apply bg-green-100 text-green-800 px-2 py-1 rounded text-sm;
+}
+
+.status-not-approved {
+  @apply bg-red-100 text-red-800 px-2 py-1 rounded text-sm;
+}
